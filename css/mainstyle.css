@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html{
+    height:100%;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+    background: #f5f6fa;
+    height: 100%;
+  }
+  
+  #hasScript{
+      display:none;
+  }
+
+  
+.detail img {
+    width: 250px;
+    height: 400px;
+  }
+  
+  .fa-reddit {
+    color: #ff5700;
+  }
+  .fa-twitter {
+    color: #00acee;
+  }
