@@ -44,9 +44,12 @@ include "includes/sidebar.php";
 $table = "view_bookgenre";
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
-    if (!empty($_POST['search'])) {
+    $query = searchQuery('*', $table, $search);
+    $result = $mydb->query($query);
+    $rows = $result->fetch_object();
+    if (!empty($_POST['search']) && isset($rows)) {
         // $search = preg_replace("#[^0-9a-z]#i","",$search);
-        $query = searchQuery('*', $table, $search) . " limit 12";
+        $query = searchQuery('*', $table, $search);
     } else {
         echo "<div class='card-body text-center'>";
         echo "<div class='row'>";
@@ -64,9 +67,26 @@ if (isset($_POST['search'])) {
         $query = null;
     }
 } else {
-    $query = selectTable('*', $table) . " where rating > 3.5 order by rand() limit 12";
+    $query = selectTable('*', $table);
 }
 if ($query != null) {
+    $result = $mydb->query($query);
+    // query total row from database and total pages
+    $total_rows = $result->num_rows;
+    $total_page = ceil($total_rows / 12);
+
+    // Get current page number
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+
+    $result_per_page = ($page - 1) * 12;
+    if (empty($_POST['search'])) {
+        $query = selectTable(('*'), $table) . ' LIMIT ' . $result_per_page . ',12';
+    }
+
     $result = $mydb->query($query);
     while ($row = $result->fetch_array()) {?>
                             <div class="col-sm-6 col-xl-3 mt-3">
@@ -76,6 +96,19 @@ if ($query != null) {
 ?>
                     </div>
             </div>
+            <!-- Pagination Goes Here -->
+            <?php
+if (isset($page)) {
+    for ($i = 1; $i <= $total_page; $i++) {?>
+        <div class="pagination-wrapper ml-auto mt-2 text-center">
+        <a style="display:inline-block;border-radius:50%; min-width:2em" class='<?php if ($i == $page) {
+        echo "text-muted bg-light";
+    } else {
+        echo "text-white bg-primary";
+    }
+        ?>' href="?page=<?=$i?>"> <?=$i?> </a></div> <?php }
+}
+?>
         </div>
     </div>
 </div>
