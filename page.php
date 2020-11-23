@@ -5,7 +5,7 @@ $result = $mydb->query($query);
 if ($row = $result->fetch_array()) {
     $title = $row['page_title'] . " | SonafBook";
     ?>
-    <div>
+    <div class="mt-3">
         <?=$row['page_content']?>
     </div>
 <?php

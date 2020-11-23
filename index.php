@@ -24,6 +24,12 @@ if (isset($_GET['content'])) {
         case "page":
             $content = "page.php";
             break;
+        case "cart":
+            $content = "cart.php";
+            break;
+        case "wishlist":
+            $content = "wishlist.php";
+            break;
         default:
             $content = "error.php";
             break;

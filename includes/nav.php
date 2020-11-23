@@ -15,7 +15,7 @@
           <div class="row align-items-center">
             <div class="col-md-2">
               <a href="<?=$_SERVER['PHP_SELF']?>" class="navbar-brand">
-                <img src="img/sonafbook_text.png" alt="<?= $_SERVER['PHP_SELF'] ?>" width="100" class="mx-auto d-block" />
+                <img src="img/sonafbook_text.png" alt="<?=$_SERVER['PHP_SELF']?>" width="100" class="mx-auto d-block" />
               </a>
             </div>
             <div class="col-md-6">
@@ -31,11 +31,11 @@
             <div class="col-md-4">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-white"><i class="far fa-heart fa-lg text-white mr-0 mr-md-2"></i>Wishlist</a>
+                  <a href="?content=wishlist" class="nav-link text-white"><i class="far fa-heart fa-lg text-white mr-0 mr-md-2"></i>Wishlist</a>
                 </li>
                 <!--show if login hide if not log-->
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-white"><i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart</a>
+                  <a href="?content=cart" class="nav-link text-white"><i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart</a>
                 </li>
                 <li href="#" class="nav-item">
                   <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#signup">
@@ -54,15 +54,15 @@
                 <div class="col-lg-12 d-flex justify-content-around">
                   <ul class="navbar-nav">
                     <?php
-                    $table = "tbl_genre";
-                    $query = selectTable('*', $table);
-                    $result = $mydb->query($query);
-                    while ($row = $result->fetch_array()) {
-                    ?>
+$table = "tbl_genre";
+$query = selectTable('*', $table);
+$result = $mydb->query($query);
+while ($row = $result->fetch_array()) {
+    ?>
                       <li class="nav-item">
-                        <a href="?content=product-category&genre=<?= $row['genre_code'] ?>" class="nav-link text-light"><?= $row['genre_code'] ?></a>
+                        <a href="?content=product-category&genre=<?=$row['genre_code']?>" class="nav-link text-light"><?=$row['genre_code']?></a>
                       </li>
-                    <?php } ?>
+                    <?php }?>
                   </ul>
                 </div>
               </div>

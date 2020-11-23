@@ -1,5 +1,7 @@
 <!--Footer-->
-<div class="container-fluid bg-dark mt-1 text-white">
+
+<div class="container-fluid bg-dark mt-1 text-white"">
+  <footer>
   <div class="row">
     <div class="col-lg-12 d-flex justify-content-between">
       <div class="p-2">
@@ -42,16 +44,17 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container-fluid bg-dark text-white">
+  <div class="container-fluid bg-dark text-white">
   <div class="row">
     <div class="col-lg-12 text-center">
       <footer>
-        <strong>Copyright &copy; <?= date("Y") ?>
+        <strong>Copyright &copy; <?=date("Y")?>
           <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">AdminRapol</a></strong>. All rights reserved.
       </footer>
     </div>
   </div>
+</div>
+  </footer>
 </div>
 </main>
 <script>
