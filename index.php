@@ -4,6 +4,7 @@ require_once "admin/dbconfig.php";
 // $buffer=ob_get_contents();
 // ob_end_clean();
 require_once "function.php";
+require_once "cartfunction.php";
 
 //db stuff
 $table = "";
@@ -23,6 +24,9 @@ if (isset($_GET['content'])) {
             break;
         case "page":
             $content = "page.php";
+            break;
+        case "cart":
+            $content = "cart.php";
             break;
         default:
             $content = "error.php";

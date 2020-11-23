@@ -35,7 +35,7 @@
                 </li>
                 <!--show if login hide if not log-->
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-white"><i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart</a>
+                  <a href="?content=cart" class="nav-link text-white"><i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart</a>
                 </li>
                 <li href="#" class="nav-item">
                   <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#signup">
@@ -52,18 +52,13 @@
             <div class="container-fluid d-none d-md-block">
               <div class="row">
                 <div class="col-lg-12 d-flex justify-content-around">
-                  <ul class="navbar-nav">
-                    <?php
-                    $table = "tbl_genre";
-                    $query = selectTable('*', $table);
-                    $result = $mydb->query($query);
-                    while ($row = $result->fetch_array()) {
-                    ?>
-                      <li class="nav-item">
+                  <ul class="navbar-nav"><?php
+                  $table = "tbl_genre";
+                  $query = selectTable('*', $table);
+                  $result = $mydb->query($query);
+                  while ($row = $result->fetch_array()){ ?><li class="nav-item">
                         <a href="?content=product-category&genre=<?= $row['genre_code'] ?>" class="nav-link text-light"><?= $row['genre_code'] ?></a>
-                      </li>
-                    <?php } ?>
-                  </ul>
+                    </li><?php }?></ul>
                 </div>
               </div>
             </div>

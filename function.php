@@ -18,3 +18,5 @@ function deleteData($table, $pk)
 {
     return "delete from $table where $pk ";
 }
+
+?>
