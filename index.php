@@ -4,7 +4,7 @@ require_once "admin/dbconfig.php";
 // $buffer=ob_get_contents();
 // ob_end_clean();
 require_once "function.php";
-require_once "cartfunction.php";
+
 
 //db stuff
 $table = "";
@@ -12,6 +12,7 @@ $query = "";
 $result = "";
 //
 $content = "main.php";
+require_once "cartfunction.php";
 
 if (isset($_GET['content'])) {
     $content = $_GET['content'];
@@ -27,6 +28,9 @@ if (isset($_GET['content'])) {
             break;
         case "cart":
             $content = "cart.php";
+            break;
+        case "checkout":
+            $content = "checkout.php";
             break;
         default:
             $content = "error.php";

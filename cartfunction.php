@@ -1,6 +1,22 @@
 <?php
-       
-	$msg="";			
+    session_start();
+	$msg="";
+//check if have product before go to checkout
+if (isset($_GET['content']) and $_GET['content'] =='checkout') {
+    if ($_SESSION['cartcount']==0) {
+        header("location:index.php?content=cart&nocart=1");
+    }
+}
+
+if (isset($_GET["cartaction"])) {
+            if ($_GET["cartaction"] == "clearcheckout") {
+				echo 'suc2';
+				setcookie("cart_shopping", "", time() - 3600);
+				header("location:index.php?");
+            }
+    }
+
+//cart function
 if(isset($_POST["add_to_cart"]))
 {
 	if(isset($_COOKIE["cart_shopping"]))
@@ -94,6 +110,16 @@ if (isset($_GET["clearall"])) {
 		Your Shopping Cart has been clear...
 	</div>
     ';
+}
+
+if(isset($_GET["nocart"]))
+{
+	$msg = '
+	<div class="alert alert-warning alert-dismissible">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		Please add some product from the product page..
+	</div>
+	';
 }
     
 ?>

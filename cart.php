@@ -19,13 +19,13 @@
                             <th scope="col" class="text-right">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
                             <th scope="col" class="text-right">Total</th>
-                            <th> </th>
+                            <th scope="col" class="text-right"><a href="index.php?content=cart&cartaction=clear">clear all</a></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                         <?php 
-                        
+                        $count=0;
                         if(isset($_COOKIE["cart_shopping"]))
                         {
                             $total = 0;
@@ -51,11 +51,9 @@
                         <?php $total = $total + ($values["item_quantity"] * $values["item_price"]);                       
                         }
                         }
-                        /*if(!isset($_SESSION['cartcound']))
-                        {                            
-                            $_SESSION["cartcount"] = $count;
-                            
-                        }  */                      
+                                                    
+                            $_SESSION["cartcount"] = $count;                           
+                                          
                         ?>
                         <tr>                               
                             <td></td>
@@ -63,7 +61,13 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>$ <?php echo number_format($total, 2); ?></strong></td>
+                            <td class="text-right"><strong>$ <?php 
+                            if(isset($_COOKIE["cart_shopping"]))
+                                echo number_format($total, 2);
+                            else
+                                echo '0';
+                            
+                            ?></strong></td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -77,9 +81,9 @@
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
 
-                <form action="index.php?content=cart" method="post">
-                    <input type="submit" class="btn btn-lg btn-block btn-success text-uppercase" value="Checkout"></input>
-                </form>
+                <a href="index.php?content=checkout">
+                    <button  class="btn btn-lg btn-block btn-success text-uppercase" value="Checkout">Checkout</button>
+                </a>
 
                 </div>
             </div>

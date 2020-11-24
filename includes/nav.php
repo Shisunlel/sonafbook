@@ -35,7 +35,16 @@
                 </li>
                 <!--show if login hide if not log-->
                 <li class="nav-item">
-                  <a href="?content=cart" class="nav-link text-white"><i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart</a>
+                  <a href="?content=cart" class="nav-link text-white">                    
+                    <i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart
+                    <sub><span class="badge badge-pill badge-danger z-depth-1 mr-2">
+                      <?php if(isset($_SESSION['cartcount']))
+                      {
+                          echo $_SESSION["cartcount"];
+                      }
+                      ?>
+                    </span></sub>
+                  </a>
                 </li>
                 <li href="#" class="nav-item">
                   <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#signup">
