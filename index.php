@@ -11,6 +11,11 @@ $query = "";
 $result = "";
 //
 $content = "main.php";
+<<<<<<< Updated upstream
+=======
+require_once "cartfunction.php";
+include "login.php";
+>>>>>>> Stashed changes
 
 if (isset($_GET['content'])) {
     $content = $_GET['content'];
@@ -26,6 +31,9 @@ if (isset($_GET['content'])) {
             break;
         case "cart":
             $content = "cart.php";
+            break;
+        case "wishlist":
+            $content = "wishlist.php";
             break;
         case "wishlist":
             $content = "wishlist.php";

@@ -24,7 +24,31 @@ for ($i = 0; $i < 5; $i++) {
             $<?=$row['sell_price']?>
             <span class="text-muted small"><?php if ($row['isDiscount'] == 'Y') {?><del><?=$row['original_price']?></del><?php }?></span>
         </p>
+<<<<<<< Updated upstream
         <button href="#" class="btn btn-info">Add to Cart</button>
+=======
+        
+            <!-- add to cart-->
+            <form method="post" action="index.php?content=cart">
+                <input type="submit" name="add_to_cart" class="btn btn-info" value="Add to Cart">
+                    <!--cart value-->
+                <input type="hidden" name="quantity" value="1" />
+                <input type="hidden" name="cartimg" value="<?= $row['img'] ?>"/>
+                <input type="hidden" name="prod_id" value="<?=$row['book_id']?>" />
+                <input type="hidden" name="prod_title" value="<?= $row['book_title'] ?>" />
+					<input type="hidden" name="qty_instock" value="<?= $row['qty_inStock']?>"/>
+                <input type="hidden" name="prod_price" value="<?php 
+                if ($row['isDiscount'] == 'Y') 
+                {
+                    echo $row['sell_price'];
+                }
+                else
+                    echo $row['original_price'];
+
+                ?>" />
+
+            </form>
+>>>>>>> Stashed changes
     </div>
 </div>
 </div>

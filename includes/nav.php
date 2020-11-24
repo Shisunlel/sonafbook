@@ -30,22 +30,42 @@
             </div>
             <div class="col-md-4">
               <ul class="navbar-nav">
+                <?php if (isset($_SESSION['log_name']) && isset($_COOKIE['username'])) {?>
                 <li class="nav-item">
                   <a href="?content=wishlist" class="nav-link text-white"><i class="far fa-heart fa-lg text-white mr-0 mr-md-2"></i>Wishlist</a>
                 </li>
+<?php }?>
                 <!--show if login hide if not log-->
+                <?php if (isset($_SESSION['log_name'])) {?>
                 <li class="nav-item">
+<<<<<<< Updated upstream
                   <a href="?content=cart" class="nav-link text-white"><i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart</a>
+=======
+                  <a href="?content=cart" class="nav-link text-white">
+                    <i class="fas fa-shopping-cart text-white mr-0 mr-md-2"></i>Cart
+                    <sub><span class="badge badge-pill badge-danger z-depth-1 mr-2">
+                      <?php if (isset($_SESSION['cartcount'])) {
+    echo $_SESSION["cartcount"];
+}
+    ?>
+                    </span></sub>
+                  </a>
+>>>>>>> Stashed changes
                 </li>
-                <li href="#" class="nav-item">
-                  <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#signup">
+<?php }?>
+<?php if (!isset($_SESSION['log_name'])) {?>
+                <li class="nav-item">
+                  <a href="" class="nav-link text-white" data-toggle="modal" data-target="#signup">
                     <i class="fas fa-user fa-lg text-white mr-2"></i>Sign in/Join
                   </a>
                 </li>
+<?php }?>
                 <!-- show if login hide if not log -->
+                <?php if (isset($_SESSION['log_name'])) {?>
                 <li class="nav-item ml-md-auto">
-                  <a href="#" class="nav-link" data-toggle="modal" data-target="#signout"><i class="fas fa-sign-out-alt fa-lg text-danger"></i></a>
+                  <a href="" class="nav-link" data-toggle="modal" data-target="#signout"><i class="fas fa-sign-out-alt fa-lg text-danger"></i></a>
                 </li>
+                <?php }?>
               </ul>
             </div>
             <!--Dropdown-->
@@ -90,43 +110,80 @@ while ($row = $result->fetch_array()) {
             <button class="btn btn-success" type="button" data-dismiss="modal">
               Stay Here
             </button>
-            <a href="admin/logout.php" class="btn btn-danger" type="button">
-              Logout
-            </a>
+            <form action="?login.php">
+            <input type="submit" class="btn btn-danger"  value="Logout" name="log_out">
+            </form>
           </div>
         </div>
       </div>
     </div>
     <!--End of Modal-->
-    <!--Modal-->
+    <!--Sign in or Sign up modal-->
     <div class="modal fade" id="signup">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
+        <div class="row">
+        <div class="col-lg-6">
+      <form method="post" action="?login">
           <div class="modal-header">
-            <h4 class="modal-title">Thanks for joining us!</h4>
+            <h4 class="modal-title">Join our journey!</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" name="sign_name"
+            id="sign_name" class="form-control" value="" placeholder="Enter your username..." />
+            <p id="valid_user" class="none">Username is available</p>
+            <p id="invalid_user" class="none">Username is not available</p>
+            <input type="email" name="sign_email"
+            id="sign_email" class="form-control my-2" value="" placeholder="Enter your email address..." />
+            <p id="valid_email" class="none">Email is valid</p>
+            <p id="invalid_email" class="none">Invalid email address</p>
+            <input type="password" name="sign_pass" class="form-control pwd_container my-2" id="sign_pass" value="" placeholder="Create a password..." />
+            <input type="password" name="resign_pass" class="form-control pwd_container  my-2" id="resign_pass" value="" placeholder="Re-enter your password..." />
+            <p id="invalid_pwd" class="none">Password requirement does not met or Password does not match</p>
+            <p>
+              <i class="fas fa-info-circle mr-2"></i>Passwords must be strong password and 8 characters long.
+            </p>
+            <span class="custom-control custom-checkbox">
+            <input type="checkbox" class="mr-2 custom-control-input" name="chk_pwd" id="chk_pwd" autocomplete="off">
+           <label class="custom-control-label" for="chk_pwd">Show Password</label>
+          </span>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" id="sign_up" class="btn btn-info" name="sign_up" value="Create an account">
+          </div>
+</form>
+        </div>
+        <?php if (!isset($_SESSION['log_in'])) {?>
+        <div style="min-height:100%;border-left:2px solid rgba(195,195,195,0.5);"></div>
+        <div class="col-lg-5">
+      <form method="post" action="?login">
+          <div class="modal-header">
+            <h4 class="modal-title">Sign In</h4>
             <button class="close btn" data-dismiss="modal" type="button">
               &times;
             </button>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control" value="" placeholder="Name..." />
-            <input type="text" class="form-control my-2" value="" placeholder="Your email address..." />
-            <input type="text" class="form-control my-2" value="" placeholder="Create a password..." />
-            <p>
-              <i class="fas fa-info-circle mr-2"></i>Passwords must be at least 6
-              characters.
-            </p>
-            <p><i class="fas fa-check-square fa-lg mr-2"></i>Show Password</p>
+            <input type="text" class="form-control"
+            name="log_name" id="log_name" value="" placeholder="Enter your username or email address..." />
+            <input type="password" id="log_pass"
+            name="log_pass" class="form-control my-2" value="" placeholder="Enter your password..." />
+            <span class="custom-control custom-checkbox">
+            <input type="checkbox" class="mr-2 custom-control-input" name="chk_pwd2" id="chk_pwd2" autocomplete="off">
+           <label class="custom-control-label" for="chk_pwd2">Show Password</label>
+          </span>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-info" type="button" data-dismiss="modal">
-              Create your account
-            </button>
+            <input type="submit" class="btn btn-info" name="log_in" value="Log In">
             <button class="btn btn-danger" type="button" data-dismiss="modal">
               Cancel
             </button>
           </div>
+</form>
         </div>
+        <?php }?>
       </div>
+</div>
+</div>
     </div>
     <!--End of Modal-->

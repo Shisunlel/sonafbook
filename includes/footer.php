@@ -8,37 +8,37 @@
         <h5>About</h5>
         <ul class="list-unstyled ml-1">
           <li class="mb-2">
-            <a class="text-white border-bottom" href="?content=page&page_id=1">About Us</a>
+            <a class="text-white" href="?content=page&page_id=1">About Us</a>
           </li>
           <li class="mb-2">
-            <a class="text-white border-bottom" href="#">Bookmark</a>
+            <a class="text-white" href="#">Bookmark</a>
           </li>
-          <li><a class="text-white border-bottom" href="#">Careers</a></li>
+          <li><a class="text-white" href="#">Careers</a></li>
         </ul>
       </div>
       <div class="p-2">
         <h5>Follow Us</h5>
         <ul class="list-unstyled ml-1">
           <li class="mb-2">
-            <a class="text-white border-bottom" href="#">Facebook</a>
+            <a class="text-white" href="#">Facebook</a>
           </li>
           <li class="mb-2">
-            <a class="text-white border-bottom" href="#">Twitter</a>
+            <a class="text-white" href="#">Twitter</a>
           </li>
-          <li><a class="text-white border-bottom" href="#">Reddit</a></li>
+          <li><a class="text-white" href="#">Reddit</a></li>
         </ul>
       </div>
       <div class="p-2">
         <h5>Help</h5>
         <ul class="list-unstyled ml-1">
           <li class="mb-2">
-            <a class="text-white border-bottom" href="#">Help</a>
+            <a class="text-white" href="#">Help</a>
           </li>
           <li class="mb-2">
-            <a class="text-white border-bottom" href="#">Track Order</a>
+            <a class="text-white" href="#">Track Order</a>
           </li>
           <li>
-            <a class="text-white border-bottom" href="?content=page&page_id=2">Contact Us</a>
+            <a class="text-white" href="?content=page&page_id=2">Contact Us</a>
           </li>
         </ul>
       </div>
@@ -57,6 +57,7 @@
   </footer>
 </div>
 </main>
+<script src="js/app.js"></script>
 <script>
  document.getElementById('hasScript').style.display = "block";
 </script>
