@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 21, 2020 at 10:06 AM
+-- Generation Time: Nov 24, 2020 at 07:19 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.4.9
 
@@ -127,6 +127,30 @@ INSERT INTO `tbl_book` (`book_id`, `book_title`, `unit_price`, `original_price`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_customers`
+--
+
+DROP TABLE IF EXISTS `tbl_customers`;
+CREATE TABLE IF NOT EXISTS `tbl_customers` (
+  `cus_id` int NOT NULL AUTO_INCREMENT,
+  `cus_name` varchar(255) NOT NULL,
+  `cus_pwd` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cus_email` varchar(255) NOT NULL,
+  PRIMARY KEY (`cus_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_customers`
+--
+
+INSERT INTO `tbl_customers` (`cus_id`, `cus_name`, `cus_pwd`, `cus_email`) VALUES
+(3, 'oceanviewbaby', '429cbbc051c6cfc4718b6cfa59436999', 'email@email.com'),
+(4, 'oceanicMaster', '429cbbc051c6cfc4718b6cfa59436999', 'yourmail@gmail.com'),
+(5, 'kapparose', '429cbbc051c6cfc4718b6cfa59436999', 'kww@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_genre`
 --
 
@@ -214,10 +238,10 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `user_name` varchar(100) NOT NULL,
   `user_password` varchar(100) NOT NULL,
   `user_status` enum('Y','N') NOT NULL,
-  `user_type` enum('admin','subscriber') NOT NULL,
+  `user_type` enum('admin','subscriber') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'subscriber',
   `last_login` datetime NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_users`
@@ -225,7 +249,8 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 
 INSERT INTO `tbl_users` (`user_id`, `user_name`, `user_password`, `user_status`, `user_type`, `last_login`) VALUES
 (1, 'admin', '202cb962ac59075b964b07152d234b70', 'Y', 'admin', '2020-09-21 18:54:27'),
-(2, 'darwin', '202cb962ac59075b964b07152d234b70', 'Y', 'subscriber', '2020-09-21 18:54:27');
+(2, 'darwin', '202cb962ac59075b964b07152d234b70', 'Y', 'subscriber', '2020-09-21 18:54:27'),
+(3, 'davish', '8c947aa1a44da2f056f48124b76a4d7d', 'Y', 'subscriber', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
